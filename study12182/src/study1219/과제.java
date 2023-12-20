@@ -20,16 +20,12 @@ public class 과제 {
 	System.out.println( basic );
 	
 	
-	String 그대 = song.replace("당신", "그대");
-	System.out.println();
-	System.out.println( 그대 );
+	
 	String basic_그대 = basic.replace("당신", "그대");
 	System.out.println();
 	System.out.println( basic_그대 );
 	
-	String 크리스마스 = song.replace("크리스마스","christmas");
-	System.out.println();
-	System.out.println( 크리스마스.toUpperCase() );
+	
 	String basic_크리스마스 = basic.replace("크리스마스", "christmas");
 	System.out.println();
 	System.out.println( basic_크리스마스.toUpperCase() );
