@@ -1,5 +1,5 @@
 package °úÁ¦;
 
-public class sedan {
-
+public class sedan extends car  {
+	String gear;
 }

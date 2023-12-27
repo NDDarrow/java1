@@ -1,5 +1,5 @@
 package °úÁ¦;
 
-public class supercar {
+public class supercar extends car {
 
 }

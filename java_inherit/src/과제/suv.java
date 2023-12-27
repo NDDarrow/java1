@@ -1,5 +1,4 @@
 package °úÁ¦;
 
-public class suv {
-
-}
+public class suv extends car {
+	

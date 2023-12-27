@@ -1,5 +1,5 @@
 package °úÁ¦;
 
-public class truck {
+public class truck extends car {
 
 }
