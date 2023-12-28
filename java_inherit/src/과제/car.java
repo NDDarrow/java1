@@ -6,4 +6,9 @@ public class car {
 	String color = "blue";
 	String brand = "현대";
 	
+	@Override
+	public String toString() {
+		return "배기량: " + displacement + "cc 차중량: " + weight + "kg \n색상 : " + 
+				color + " 브랜드 : " + brand;
+	}
 }
