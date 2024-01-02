@@ -1,27 +1,117 @@
 package exception_ex;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 public class java_exception {
 	
 	static Scanner scan = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	static String myAge(String birth) throws StringIndexOutOfBoundsException{
+		//Date today = new Date(); ï¿½ï¿½Â¥ï¿½ï¿½ ï¿½Ù·ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½, getXxx()ï¿½Ş¼ï¿½ï¿½ï¿½ ï¿½ï¿½Â¥ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		
-		String name = "³ëÀçÈ«";
-		int score = 0;
-		int[] num = {};
+		Calendar today = Calendar.getInstance();
 		
-		try {
-			score = scan.nextInt();
+//		System.out.println( "ï¿½âµµ : " + today.get( Calendar.YEAR ) );
+//		System.out.println( "ï¿½ï¿½ : " + today.get( Calendar.MONTH ) );
+//		System.out.println( "ï¿½ï¿½ : " + today.get( Calendar.DATE ) );
+//		
+//		System.out.println( "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ : " + today.get( Calendar.WEEK_OF_YEAR));
+//		
+		
+//		System.out.println( "ï¿½ï¿½ï¿½ï¿½(1-ï¿½Ï¿ï¿½ï¿½ï¿½) : " + today.get(Calendar.DAY_OF_WEEK));
+//		
+//		today.set(2020, 1, 1);
+//		System.out.println( "ï¿½Ì´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : " + today.getActualMaximum(Calendar.DATE));
+		
+		
+		int year = today.get(Calendar.YEAR);
+		String age = null;
+		
+		// throw - ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½
+		//	throwï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ş¼ï¿½ï¿½ï¿½ï¿½ ï¿½İµï¿½ï¿½ throwsï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ ï¿½Ñ´ï¿½.
+		//	throwï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Ş¼ï¿½ï¿½å°¡ ï¿½î¶² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È°ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö°ï¿½, ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+		//	ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½Ø´ï¿½.
+		
+		// throws - ï¿½ï¿½ï¿½Ü¸ï¿½ ï¿½Ñ°ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
+
+			if(birth.length() !=8 ) {
+				throw new StringIndexOutOfBoundsException("method:myAge - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 8ï¿½Ú¸ï¿½ ï¿½Ô·ï¿½");
+			}
+			if( birth.matches("[+-]?\\d*(\\.\\d+)?") ){
+				throw new NumberFormatException("method:myAge - ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½");
+			}
+			int myYear = Integer.parseInt(birth.substring( 0 , 4 ));
+			age = (year - myYear) + "ï¿½ï¿½";
+			return age;
+		
 			
-			System.out.println( "ÀÌ¸§ : " + name.concat("´Ô") );
-			System.out.println( score/ num.length);
-		}catch(java.lang.NullPointerException e) {
-			System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
-		}catch(java.lang.ArithmeticException e) {
-			System.out.println("¼ºÀûÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+//		}finally { //try ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï°Å³ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½
+//			return "0ï¿½ï¿½";
+//		}
+		
+		
+		//System.out.println( 1 + today.getMonth()); //ï¿½Ô¼ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ -Ç¥ï¿½ï¿½ = ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼Òµï¿½)
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// ìë™ ìì› ë°˜í™˜ ì˜ˆì™¸ ì²˜ë¦¬ - íŒŒì¼ì—´ê¸°ì™€ ê°™ì€ ì™¸ë¶€ íŒŒì¼(ë°ì´í„°)ë¥¼ ì‚¬ìš©í•˜ê²Œë˜ëŠ”ê²½ìš°
+		//						 ì‚¬ìš©í•œ ë©”ëª¨ë¦¬ì™€ cpu ë“±ë“±ì„ closeë¥¼ í†µí•´ ë°˜í™˜í•´ì•¼ í•œë‹¤.
+		//						 ìë™ìì›ë°˜í™˜ ì˜ˆì™¸ì²˜ë¦¬ëŠ” ì½”ë“œì˜ ë³µì¡ì„±ì„ ì¤„ì—¬ì¤€ ì˜ˆì™¸ì²˜ë¦¬ì´ë‹¤.
+		//						 (ì‚¬ìš©í•œ ë¦¬ì†ŒìŠ¤ë¥¼ ë°˜ë‚©ì‹œí‚¤ì§€ ì•Šê³  ë¶€ë‹´ì„ ê°€ì¤‘ì‹œì¼œì„œ ê³µê²©í•˜ëŠ” ê²ƒì´ ë””ë„ìŠ¤ ê³µê²©)
+		// try ( íŒŒì¼ì—´ê¸° ){
+		// }catch( ì˜ˆì™¸í´ë˜ìŠ¤ ){
+		// }
+		
+		//BufferedReader bf = null;
+		
+		try (BufferedReader bf = new BufferedReader(new FileReader("c:/test/book.txt")))
+		{
+			while( true ) {
+				String line = bf.readLine();
+				if( line == null ) break;
+				System.out.println(line);
+			}
+		}catch( Exception e) {
+			System.out.println("íŒŒì¼ ë¡œë“œ ë° ë°˜í™˜ ì‹¤íŒ¨");
 		}
+		//ìœ„ì™€ ê°™ì€ í˜•íƒœë¡œ ì½”ë“œë¥¼ êµ¬ì„±í•˜ë©´ ìë™ìœ¼ë¡œ íŒŒì¼ì„ ì½ê³ ì“¸ìˆ˜ ìˆìŒ
+		
+		
+//		String birth = null;
+//		
+//		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : ");
+//		birth = scan.nextLine();
+//		try {
+//		String age = myAge(birth);
+//		System.out.println( age );
+//		}catch(Exception e) {
+//			System.out.println( e.getMessage() );
+//			e.printStackTrace();
+//		}
+//		String name = "ï¿½ï¿½ï¿½ï¿½È«";
+//		int score = 0;
+//		int[] num = {};
+//		
+//		try {
+//			score = scan.nextInt();
+//			
+//			System.out.println( "ï¿½Ì¸ï¿½ : " + name.concat("ï¿½ï¿½") );
+//			System.out.println( score/ num.length);
+//		}catch(java.lang.NullPointerException e) {
+//			System.out.println("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½");
+//		}catch(java.lang.ArithmeticException e) {
+//			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½");
+//		}catch(Exception e ) {
+//			e.printStackTrace();
+//		}
+//		
+//		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½?");
 	
 //		try {
 //			String name;
@@ -30,12 +120,12 @@ public class java_exception {
 //			System.out.println( name.charAt(0));
 //			
 //			System.out.println( name );
-//		}catch( Exception e) { //Exception ¸ğµç ¿¹¿ÜÃ³¸®Áß¿¡ Á¦ÀÏ ½ë³ğ
-//			System.out.println("ÀÌ¸§À» ÀÔ·ÂÇÏ¼¼¿ä");
+//		}catch( Exception e) { //Exception ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+//			System.out.println("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½");
 //		}
 		
-//		//try - catch ¹®
-//		try { //¿À·ù°¡ ¹ß»ıÇÒ °Í °°Àº ÄÚµå¸¦ »ğÀÔ
+//		//try - catch ï¿½ï¿½
+//		try { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµå¸¦ ï¿½ï¿½ï¿½ï¿½
 //			int num = 10;
 //			
 //			System.out.println( num/0 );
@@ -45,9 +135,9 @@ public class java_exception {
 //		}catch ( java.lang.ArithmeticException e) {
 //			System.out.println( e.getMessage() );
 //			e.printStackTrace();
-//			System.out.println("0À¸·Î ³ª´©±â ÇÒ ¼ö ¾ø½À´Ï´Ù.");
+//			System.out.println("0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 //		}
-//		System.out.println( "ÇÁ·Î±×·¥ Á¾·á");
-//		//¿¹¿ÜÃ³¸® - ¿À·ù°¡³ª¸é ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ß ÇÏÁö¸¸ ÀÏ´Ü È¸ÇÇÇØ¼­ ÇÁ·Î±×·¥ÀÌ '½ÇÇà'Àº µÇ°Ô ÇÏ´Â°Å
+//		System.out.println( "ï¿½ï¿½ï¿½Î±×·ï¿½ ï¿½ï¿½ï¿½ï¿½");
+//		//ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ È¸ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ 'ï¿½ï¿½ï¿½ï¿½'ï¿½ï¿½ ï¿½Ç°ï¿½ ï¿½Ï´Â°ï¿½
 	}
 }
