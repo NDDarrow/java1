@@ -23,6 +23,18 @@ public class book {
 		return "제목 : " + title + "   저자 : " + writer + "   출간년도 : " + year + "년";
 	}
 	
+	
+	/*
+	 *  String[] n = new String[]{"가","나","다","라","마"};
+	 *  for( int i =0; i < n.length(); i++;){
+	 *  	if( n[i].equals("다") ){
+	 * 			return i;
+	 * 		}
+	 *  }
+	 */
+	
+	
+	
 	public String getTitle() {
 		return title;
 	}
