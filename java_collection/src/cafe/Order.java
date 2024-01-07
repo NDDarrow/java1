@@ -1,15 +1,28 @@
 package cafe;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
+
 public class Order {
 	// 전체 메뉴 보여주는 메소드 - 분류(커피, 음료, 빽스치노) 선택 -> 해당 분류에서 제품 이름 입력하여 주문
 	// 커피메뉴를 선택하여 보다가 음료메뉴를 보고싶으면 이동하여 보이게 해줘야 한다.
+	
+	
 	public static void kiosk() {
+		Scanner scan = new Scanner(System.in);
 		System.out.println("\n==========주문==========\n");
 		
 		Category main =  Category.커피;
 		while(true) {
-		System.out.println("1.커피  2.음료  3.빽스치노");
-		
+			System.out.println("1.커피  2.음료  3.빽스치노");
+			String sel = scan.nextLine();
+			file menu_list = new file();
+			
+			System.out.println();
+			if(sel == "1" || sel == "커피" ) {
+				
+			}
 		
 		}
 	}
