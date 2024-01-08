@@ -24,9 +24,10 @@ public class menu {
 		this.type = type;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return null;
+		return menu_name;
 	}
 	
 	public String getMenu_name() {
