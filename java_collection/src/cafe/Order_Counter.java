@@ -74,7 +74,7 @@ public class Order_Counter {
 			// 아이디 또는 비밀번호가 맞지 않으면
 			System.out.println("로그인 실패");
 			return login();
-		섹
+		
 		
 		// ArrayList에 저장되어있는 객체들과 비교를 하기 위해서는
 		// 반복문을 통해 객체 하나씩 가져와서 값 비교를 해준다.
