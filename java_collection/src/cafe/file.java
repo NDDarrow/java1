@@ -17,9 +17,10 @@ public class file {
 				if(line == null) break;
 				String[] temp = line.split(",");
 				
+				
 				menu data = new menu(temp[0],i(temp[1]),i(temp[2]),i(temp[3])
 				,i(temp[4]),i(temp[5]),temp[6].equals("커피") ? Category.커피 : temp[6].equals("음료") ? Category.음료 : Category.빽스치노);
-				list.put( temp[0] , data);
+				list.put( data.getMenu_name(), data);
 				
 			}
 			return list;
