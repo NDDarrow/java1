@@ -1,6 +1,6 @@
 package cafe;
 
-<<<<<<< HEAD
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,11 +11,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
-=======
+
 import java.util.HashMap;
+
 import java.util.Scanner;
 
->>>>>>> branch 'master' of https://github.com/NDDarrow/java1.git
+
 
 public class Order {
 	
@@ -23,20 +24,18 @@ public class Order {
 	
 	// 전체 메뉴 보여주는 메소드 - 분류(커피, 음료, 빽스치노) 선택 -> 해당 분류에서 제품 이름 입력하여 주문
 	// 커피메뉴를 선택하여 보다가 음료메뉴를 보고싶으면 이동하여 보이게 해줘야 한다.
-<<<<<<< HEAD
-	public static void kiosk( HashMap<Category,Set<menu>> cafeMenu ) {
-=======
+
 	
 	
-	public static void kiosk() {
+	public static void kiosk(HashMap<Category, Set<menu>> cafeMenu ) {
 		Scanner scan = new Scanner(System.in);
->>>>>>> branch 'master' of https://github.com/NDDarrow/java1.git
+
 		System.out.println("\n==========주문==========\n");
 		
 		Category main =  Category.커피;
 		while(true) {
 			System.out.println("1.커피  2.음료  3.빽스치노");
-<<<<<<< HEAD
+
 			Set<menu> list = cafeMenu.get(main);
 			scan.nextLine();
 			Iterator<menu> tmp = list.iterator();
@@ -52,16 +51,8 @@ public class Order {
 				progress(input);
 				break;
 			}
-=======
-			String sel = scan.nextLine();
-			file menu_list = new file();
-			
-			System.out.println();
-			if(sel == "1" || sel == "커피" ) {
-				
-			}
 		
->>>>>>> branch 'master' of https://github.com/NDDarrow/java1.git
+
 		}
 	}
 	
@@ -116,7 +107,23 @@ public class Order {
 			System.out.println("접속 실패");
 			e.printStackTrace();
 		}
-		
+		//데이터베이스에 데이터 저장 쿼리 만들어서 전달
+		// insert into 테이블명 (컬럼명, 컬럼명,...) values(?,?,?,...) 컬럼개수 밸류개수 동일해야함
+		String sql = "insert into history (customer, menu, price) values(?,?,?)"; //저장할 내용
+		try {
+			pt = conn.prepareStatement( sql );
+			pt.setString( 1 , id);
+			pt.setString( 2 , menu);
+			pt.setInt( 3, price);
+			
+			pt.executeUpdate(); // DB에 쿼리문 전달
+			System.out.println("데이터 저장 성공");
+			
+		}catch(SQLException e) {
+			
+			System.out.println("데이터 삽입 실패");
+			e.printStackTrace();
+		}
 	}
 	
 	
