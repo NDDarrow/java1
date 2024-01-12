@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList , java.util.LinkedList"
-	session = "false" errorPage="error.jsp" isErrorPage="true"
+	session = "true" errorPage="error.jsp" isErrorPage="true"
 	buffer="32kb" autoFlush="true"
 %>
 
@@ -50,6 +50,13 @@ num
 <% %> -server 측의 코드
 
  --> 
+<%
+	String user = null;
+	if( session.getAttribute("user") != null){
+		user =(String)session.getAttribute("user");
+	}
+%>
+
 
 
 <!DOCTYPE html>
@@ -70,6 +77,8 @@ num
 				<% } %>
 		</ul>
 	</div>
+	
+<% if(user != null){ %>
 	<form method="get" action="test.jsp">
 		<input type='text' name='name' placeholder="이름"> <br>
 		<input type='text' name='age' placeholder="나이"> <br>
@@ -79,7 +88,7 @@ num
 		<input type='checkbox' name='interest' value='car'> 자동차
 		<button> 전송</button>
 	</form>
-	
+<% } %>
 	
 </body>
 </html>
