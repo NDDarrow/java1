@@ -54,7 +54,8 @@ num
 	String user = null;
 	if( session.getAttribute("user") != null){
 		user =(String)session.getAttribute("user");
-	}
+	} //로그인 성공시 user 변수는 값을 가지고, 로그인 하지 않은 상태에서는 
+	// user 변수는 null을 가진다.
 %>
 
 
@@ -66,7 +67,7 @@ num
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="menu.jsp" %>
+	<% pageContext.include("menu.jsp?user=" + user); %>
 	
 	<div id="wrap">
 		<ul>
