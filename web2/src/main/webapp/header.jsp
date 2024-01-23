@@ -7,8 +7,8 @@
 	<div id="top">
 		<ul class="top_list">
 			<c:if test="${ sessionScope.user == null }">
-				<li><a href="">로그인</a></li>
-				<li><a href="/signup.do">회원가입</a></li>
+				<li><a href="/members?cmd=signIn">로그인</a></li>
+				<li><a href="/members?cmd=signup">회원가입</a></li>
 			</c:if>
 			
 			<c:if test="${ sessionScope.user != null }">
