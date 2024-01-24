@@ -13,7 +13,7 @@
 			
 			<c:if test="${ sessionScope.user != null }">
 				<li><a href="/members/myWrite">${sessionScope.user.name }</a></li>
-				<li><a href="/members/mypage">내정보</a></li>
+				<li><a href="/members/myPage">내정보</a></li>
 				<li><a href="/members/logout">로그아웃</a></li>
 			</c:if>
 			<li><a href="">HELP</a></li>
