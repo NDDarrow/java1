@@ -6,6 +6,8 @@ public class member {
 	private String password;
 	private String name;
 	private String tel;
+	private String image;
+	
 	public int getNum() {
 		return num;
 	}
@@ -55,5 +57,17 @@ public class member {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+	public String getImage() {
+		return image;
+	}
+
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	
 	
 }

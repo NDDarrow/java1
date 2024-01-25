@@ -3,11 +3,11 @@
 <%@ page import="java.util.Arrays" %>
 
 <div id="signup_wrap">
-	<form id="signupFm" method="post" action="/members/signSave">
+	<form id="signupFm" method="post" action="/members/signSave" enctype="multipart/form-data">
 		<input type="hidden" name="cmd" value="dao">
 		
 		<div class="myphoto">
-			<div class="photo"></div>
+			<div class="photo" ${img }></div>
 			<input type="file" name="face" id="face">
 			<label for="face">내 사진 업로드</label>
 		</div>
