@@ -7,7 +7,7 @@
 }
 
 ul, ol{ list-style-type:none; }
-a{ text-decoration:none; }
+a{ text-decoration:none; color:inherit; }
 input{ padding:0 7px; outline:none; }
 #wrap{
 	display:flex;
@@ -29,7 +29,7 @@ input{ padding:0 7px; outline:none; }
 .top_list{
 	display:flex;
 	gap:20px;
-	font-size:12px;
+	font-size:10px;
 	justify-content:end;
 	padding-right:50px;
 }
@@ -56,7 +56,7 @@ input{ padding:0 7px; outline:none; }
 #footer{
 	width:1000px;
 	padding: 50px 100px;
-	background:#f1506e;
+	background:#f1506E;
 	color:#f6f6f6;
 	margin:0 auto;
 }

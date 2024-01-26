@@ -12,16 +12,8 @@ import java.util.List;
 import DTO.LoginHistory;
 import DTO.member;
 
-public class member_dao {
-	private Connection conn = null; //접속
-	private Statement st = null; //sql질의문
-	private PreparedStatement pt = null; //Sql질의문
-	private ResultSet rs = null; //결과
+public class member_dao extends parent_dao{
 	
-	public member_dao() {
-		DriverLoad();
-		ConnectionDB();
-	}
 	
 	// 회원정보 수정
 	public void update(member user) {
@@ -160,25 +152,7 @@ public class member_dao {
 	}
 	
 	
-	private void DriverLoad() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		}catch(ClassNotFoundException e) {
-			System.out.println("드라이버 로드 실패");
-			e.printStackTrace();
-		}
-	}
-	private void ConnectionDB() {
-		String url="jdbc:mysql://localhost:3306/datatest";
-		String user="NDD";
-		String password="1234";
-		try {
-			conn = DriverManager.getConnection(url,user,password);
-		}catch(SQLException e) {
-			System.out.println("데이터베이스 접속 실패");
-			e.printStackTrace();
-		}
-	}
+	
 	
 	
 }
