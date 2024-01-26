@@ -7,7 +7,7 @@
 			var reader = new FileReader();
 			reader.onload = function(e){
 				$(".photo").css("background", "url("+ e.target.result+") no-repeat center");
-				$(".photo"),css("background-size","contain");
+				$(".photo").css("background-size","contain");
 			}
 			reader.readAsDataURL( file );
 		});
@@ -38,6 +38,7 @@
 			$("#bt").addClass("inactive");
 		}else{
 			$("#signupFm").submit(); //form 내부의 데이터 서버에 전달
+			$("#signupCmd").submit();
 		}
 	});
 });

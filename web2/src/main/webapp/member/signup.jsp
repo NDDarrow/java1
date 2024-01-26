@@ -41,7 +41,6 @@
 		<div class="signBt">
 			<button type="button" id="bt" class="active inactive" disabled>Sign</button>
 		</div>
-		
 	</form>
 </div>
 

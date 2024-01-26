@@ -150,7 +150,21 @@ public class member_dao extends parent_dao{
 			e.printStackTrace();
 		}
 	}
-	
+	public int num() {
+		int num = 0;
+		String sql = "select * from member order by id desc limit 1";
+		try {
+			st = conn.prepareStatement(sql);
+			rs = st.executeQuery(sql);
+			if (rs.next()) {  // rs.next()를 한 번 호출하여 다음 행으로 이동
+		            num = rs.getInt("id");  // "id"는 실제 컬럼명에 맞게 수정
+		    }
+		}catch(SQLException e){
+			System.out.println("유저넘버 불러오기 실패");
+			e.printStackTrace();
+		}
+		return num;
+	}
 	
 	
 	

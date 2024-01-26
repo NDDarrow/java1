@@ -88,16 +88,5 @@ public class board_dao extends parent_dao{
 			e.printStackTrace();
 		}
 	}
-//	public void t() {
-//		String sql="select * form board";
-//		List<board> list = new ArrayList<>();
-//		try {
-//			st = conn.createStatement();
-//			rs = st.executeQuery(sql);
-//		}catch() {
-//			
-//		}
-//	}
-	
 	
 }
