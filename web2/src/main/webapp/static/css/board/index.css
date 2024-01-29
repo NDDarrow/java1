@@ -89,7 +89,7 @@
 	width:100%;
 }
 .list_table th, .list_table td{
-	border:1px soild #aaa;
+	border-bottom: 1px solid #aaa;
 	padding:10px 0;
 }
 .list_table .num{ width:100px;}

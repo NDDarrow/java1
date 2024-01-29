@@ -16,9 +16,7 @@ import DTO.member;
 public class member_service implements member_action {
 	private member_dao mdao = new member_dao();
 	
-	public String[] emailList() {
-		return mdao.findAllEmail();
-	}
+	
 	public int findNum() {
 		return mdao.num();
 	}
@@ -29,37 +27,35 @@ public class member_service implements member_action {
 		
 		String path="C:\\NDDarrow\\java1\\java1\\web2\\src\\main\\webapp\\static\\image";
 		int size = 1024*1024*20;
-		String face = null;
 		
 		
-		try {
-			MultipartRequest mr = new MultipartRequest( request, path, size, "UTF-8", new DefaultFileRenamePolicy() );
-			Enumeration em = mr.getFileNames();
-			String file = (String)em.nextElement();
-			face = mr.getFilesystemName(file);
-			
+			String email = null;
+			String pw = null;
+			String tel = null;
+			String name = null;
+			String face = null;
+			try {
+				MultipartRequest mr = new MultipartRequest( request, path, size, "UTF-8", new DefaultFileRenamePolicy() );
 				
-			
-			String email = mr.getParameter("email");
-			String pw  = mr.getParameter("pin");
-			String name = mr.getParameter("name");
-			String tel = mr.getParameter("tel");				
-			mdao.insert( new member(email, pw, name, tel) );
-			response.sendRedirect("/members/signIn");
+					email = mr.getParameter("email");
+					name = mr.getParameter("name");
+					pw = mr.getParameter("pin");
+					tel = mr.getParameter("tel");
+					
+					Enumeration em = mr.getFileNames();
+					String files = (String)em.nextElement();
+					face = mr.getFilesystemName(files);
 				
-
-			
-		}catch(Exception e){
+			}catch(Exception e){
 				System.out.println("파일 업로드 실패");
 				e.printStackTrace();
-		}
-		
-		
-
-		mdao.pictureInsert( face, num+1 );
-		return null;
+			}
+			int id = mdao.insert( new member(email, pw, name,tel) );
+			mdao.pictureInsert( face, id );
 			
-	}
+			response.sendRedirect("/members/signIn");
+			return null;
+		}		
 	
 }
 
