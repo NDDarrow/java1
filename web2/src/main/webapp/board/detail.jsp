@@ -2,12 +2,13 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div id="detail_wrap">
 	<div class="detail_text">
 		<b>${data.id }.</b>
 		<span class="hit_box"><i class="bi bi-star-fill"></i>${data.hit }</span>
-		<span calss="date_box"><i class="bi bi-calendar-check-fill"></i>${data.wdate }</span>
+		<span class="date_box"><i class="bi bi-calendar-check-fill"></i>${data.wdate }</span>
 	</div>
 	
 	<div class="detail_text">
@@ -21,7 +22,7 @@
 			<b class="writer_box">${data.writer }</b>
 		</div>
 		<div class="box">
-			<span classs="title_head">언어</span>
+			<span class="title_head">언어</span>
 			<b class="lang_box">${data.lang }</b>
 		</div>
 	</div>
@@ -38,6 +39,38 @@
 	</c:if>
 	
 	<div id="reply_wrap">
+		<div class="reply_input">
+			<form method="post" action="/board_reply.do" id="replyFm">
+				<input type="hidden" name="board_id" value="${data.id }">
+				<div class="input_box">
+					<textarea name="comment" id="comment"></textarea>
+					<button class="reply_bt">작성</button>
+				</div>
+			
+			</form>
+		</div>
+		<div class="reply_list">
+			<ul class="reply_list_box">
+				<c:forEach var="row" items="${reply_list }">	
+					<li>
+						<div class="reply_info">
+							<b>${row.writer }</b>
+							<small>
+								<fmt:formatDate value="${row.wdate }" pattern="yy.MM.dd HH:mm"/>
+							</small>
+						</div>
+						<div class="reply_comment">${row.comment }</div>
+						<div class="del_bt">
+							<c:if test="${row.member_id == user.num }">
+								<a href="javascript:reply_del('${row.id }' ,'${data.id }');">삭제</a>
+							</c:if>
+						</div>
+					</li>
+				</c:forEach>
+			</ul>
+		
+		</div>
+	
 	</div>
 </div>
 
@@ -50,7 +83,20 @@
 		var really = confirm("정말로 삭제 하시겠습니까? ");
 		location.href="/board_delete.do?id="+i;
 	}
-	
+	<c:if test="${user==null}">
+		$("#comment").on("focus", function(){
+				alert("로그인 후에 이용하세요");
+				$(this).blur();
+		});
+		
+		
+	</c:if>
+	function reply_del(i, bid){
+		var real = confirm("삭제?")
+		if( real ){
+			location.href="/board_replyDelete.do?id="+i+"&bid="+bid;
+		}
+	}
 	
 	
 	
