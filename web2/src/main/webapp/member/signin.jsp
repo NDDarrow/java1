@@ -6,9 +6,10 @@
 	<script> alert("아이디 또는 비밀번호가 잘못되었습니다.")</script>
 </c:if>
 
+
 <div id="signin_wrap">
 	<form id="signFm" method="post" action="/members/signExcute">
-		<input type="hidden" name="cmd" value="dao">
+		<input type="hidden" name="cmd" id="cmd" value="dao">
 		<div id="login_wrap">
 			<div class="login_input">
 				<input type="email" name="email" id="email" placeholder="이메일">

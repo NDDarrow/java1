@@ -19,6 +19,8 @@ public class member_login implements member_action{
 		}else {
 			String email = request.getParameter("email");
 			String pw = request.getParameter("pin");
+			String preUrl = request.getParameter("cmd");
+			
 			member user =  dao.findByemailpw(email, pw);
 			if( user == null ) {// 로그인 실패
 				request.setAttribute("fail","1");
@@ -29,7 +31,7 @@ public class member_login implements member_action{
 				dao.getPicture(user);
 				request.getSession().setAttribute("user", user);
 			}
-			response.sendRedirect("/");
+			response.sendRedirect(preUrl);
 			return null;
 		}
 	}
